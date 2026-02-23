@@ -20,12 +20,7 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-    "http://localhost:3000",
-  ],
+  origin: "*"
 }));
 app.use(express.json());
 
