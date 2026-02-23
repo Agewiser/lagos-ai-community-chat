@@ -12,7 +12,12 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: [
+      "https://lagos-ai-community-chat.vercel.app",
+      "https://lagos-ai-community-chat-fzzcntbym-jimi-akinleyes-projects.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ],
     methods: ["GET", "POST"],
   },
 });
@@ -20,7 +25,12 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: "*"
+  origin: [
+      "https://lagos-ai-community-chat.vercel.app",
+      "https://lagos-ai-community-chat-fzzcntbym-jimi-akinleyes-projects.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ],
 }));
 app.use(express.json());
 
