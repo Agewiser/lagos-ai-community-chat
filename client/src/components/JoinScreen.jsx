@@ -1,6 +1,6 @@
 import { useState} from 'react';
 
-export default function JoinScreen (onJoin) {
+export default function JoinScreen ({onJoin}) {
     const [name, setName] = useState('');
 
     function handleSubmit () {

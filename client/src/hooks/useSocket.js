@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { io } from "socket-io-client";
+import { io } from "socket.io-client";
 
 const SERVER_URL = "http://localhost:3001";
 

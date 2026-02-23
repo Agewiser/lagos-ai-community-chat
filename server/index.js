@@ -84,7 +84,14 @@ io.on("connection", (socket) => {
 
   // Admin Chike welcomes every new user
   socket.on("user_joined", async (data) => {
-    const username = data.username || "new user";
+  const username = data.username || "newcomer";
+  console.log(`user_joined received for: ${username}`); // ADD THIS
+
+  const isPersona = personas.some(
+    (p) => p.name.toLowerCase() === username.toLowerCase()
+  );
+  if (isPersona) return;
+
     const adminChike = personas.find((p) => p.isAdmin);
 
     // Chike notices after 1.5-3 seconds
