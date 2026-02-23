@@ -3,14 +3,11 @@
   "version": "1.0.0",
   "description": "Lagos AI chat app",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
