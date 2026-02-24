@@ -113,12 +113,17 @@ io.on("connection", (socket) => {
         reacting.forEach((persona, i) => {
           setTimeout(async () => {
             try {
+              //persona has started typing
+              io.emit ("typing_start", { name: persona.name, avatar: persona.avatar, color: persona.color});
+
               const reactionText = await getPersonaResponse(persona, chatHistory);
               await emitMessage(persona, reactionText, i + 1);
+              io.emit ("typing_stop", { name: persona.name}); //persona stopped typing
+
             } catch (err) {
               console.error(`${persona.name} welcome reaction error:`, err.message);
             }
-          }, randomDelay(5000, 10000) + i * randomDelay(2000, 4000));
+          }, randomDelay(8000, 12000) + i * randomDelay(3000, 5000));
         });
 
       } catch (err) {
@@ -148,12 +153,20 @@ io.on("connection", (socket) => {
     }
 
     responding.forEach((persona, i) => {
-      const delay = randomDelay(4000, 12000) + i * randomDelay(2000, 4000);
+      const delay = randomDelay(7000, 17000) + i * randomDelay(3000, 5000);
 
       setTimeout(async () => {
         try {
+          //Tell the app that this person is typing.
+          io.emit ("typing_start", { name: persona.name, avatar: persona.avatar, color: persona.color});
+
           const responseText = await getPersonaResponse(persona, chatHistory);
           await emitMessage(persona, responseText, i);
+
+          //Tell the app that this person has stopped typing.
+          io.emit ("typing_stop", { name: persona.name});
+
+
         } catch (err) {
           console.error(`${persona.name} error:`, err.message);
         }

@@ -2,9 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useSocket } from "../hooks/useSocket";
 import MessageBubble from "./MessageBubble";
+import TypingIndicators from "./TypingIndicators";
 
 export default function ChatRoom({ username }) {
-  const { messages, connected, sendMessage } = useSocket(username);
+  const { messages, connected, sendMessage, typingUsers } = useSocket(username);
   const [input, setInput] = useState("");
   const bottomRef = useRef(null);
 
@@ -74,6 +75,9 @@ export default function ChatRoom({ username }) {
         {/* Invisible div at bottom for auto-scroll */}
         <div ref={bottomRef} />
       </div>
+
+      {/* Typing indicators  */}
+      <TypingIndicators typingUsers={typingUsers} />
 
       {/* Input Area */}
       <div className="bg-white border-t border-gray-200 px-4 py-3 flex items-center gap-2">

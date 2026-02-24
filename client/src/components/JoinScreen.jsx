@@ -10,7 +10,7 @@ export default function JoinScreen ({onJoin}) {
     }
 
     function handleKeyDown (e) {
-        if (e.Key === 'Enter') handleSubmit();
+        if (e.key === 'Enter') handleSubmit();
     }
 
     return (
